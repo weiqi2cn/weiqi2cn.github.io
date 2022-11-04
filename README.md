@@ -6,11 +6,11 @@ https://go.tianqiweiqi.com
 
 现在有几个不错的，我镜像下来备用：
 
-1.wgo
+1.wgo wgo.waltheri.net
 
 https://go.tianqiweiqi.com/wgo
 
-2.eidogo
+2.eidogo.com
 
 https://go.tianqiweiqi.com/eidogo
 
