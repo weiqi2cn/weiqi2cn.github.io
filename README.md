@@ -9,12 +9,13 @@ https://go.tianqiweiqi.com
 1.wgo wgo.waltheri.net
 
 https://go.tianqiweiqi.com/wgo
+https://github.com/klangfarbe/Go-for-WordPress
 
 2.eidogo.com
 
 https://go.tianqiweiqi.com/eidogo
 
-url:
+## url:
 
 https://gobase.org
 
@@ -25,3 +26,9 @@ https://senseis.xmp.net
 https://resigning-in-sente.github.io
 
 https://lifein19x19.com
+
+## Go Board SGF Viewer
+
+https://igoppy.com/
+
+https://profiles.wordpress.org/passerines/
