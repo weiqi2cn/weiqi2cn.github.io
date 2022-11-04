@@ -9,3 +9,7 @@ https://go.tianqiweiqi.com
 1.wgo
 
 https://go.tianqiweiqi.com/wgo
+
+2.eidogo
+
+https://go.tianqiweiqi.com/eidogo
