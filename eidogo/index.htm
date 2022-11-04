@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>EidoGo - Go Games, Pattern Search, Joseki Tutor, SGF Editor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="stylesheet" href="css/site-style.css-20130125.css" tppabs="http://eidogo.com/css/site-style.css?20130125" type="text/css">
+
+
+
+<script type="text/javascript" src="player/js/all.compressed.js-20130125" tppabs="http://eidogo.com/player/js/all.compressed.js?20130125"></script>
+
+<!-- <script type="text/javascript" src="/player/js/lang.js"></script>
+<script type="text/javascript" src="/player/js/eidogo.js"></script>
+<script type="text/javascript" src="/player/js/util.js"></script>
+<script type="text/javascript" src="/player/i18n/en.js"></script>
+<script type="text/javascript" src="/player/js/gametree.js"></script>
+<script type="text/javascript" src="/player/js/sgf.js"></script>
+<script type="text/javascript" src="/player/js/board.js"></script>
+<script type="text/javascript" src="/player/js/rules.js"></script>
+<script type="text/javascript" src="/player/js/player.js"></script>
+<script type="text/javascript" src="/player/js/init.js"></script> -->
+
+</head>
+<body>
+    
+<div id="container">
+    
+    <div id="header">
+
+        <h1><a href="index.htm" tppabs="http://eidogo.com/">Eido<span>Go</span></a></h1>
+
+        <p id="ownership">
+            EidoGo is <a href="source.htm" tppabs="http://eidogo.com/source">Open Source &mdash; Embed it in your website!</a>
+            &nbsp;Created by <script type="text/javascript">document.write("<n uers=\"znvygb:wx\100gva\056ah\">Whfgva Xenzre<\057n>".replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));</script>.
+        </p>
+
+        <ul id="links">
+            <li><a href="index.htm#kjd" tppabs="http://eidogo.com/#kjd">Joseki Tutor</a></li>
+            <li><a href="index.htm#search" tppabs="http://eidogo.com/#search">Pattern Search</a></li>
+            <li><a href="tourney.htm" tppabs="http://eidogo.com/tourney">Games</a></li>
+            <li><a href="problems.htm" tppabs="http://eidogo.com/problems">Problems</a></li>
+            <li><a href="upload.htm" tppabs="http://eidogo.com/upload">Upload</a></li>
+            <li><a href="index.htm#gnugo" tppabs="http://eidogo.com/#gnugo">Play GNU Go</a></li>
+            <li><a href="index.htm#blank" tppabs="http://eidogo.com/#blank">Blank Board</a></li>
+            <li><a href="javascript:if(confirm('http://senseis.xmp.net/?EidoGo  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://senseis.xmp.net/?EidoGo'" tppabs="http://senseis.xmp.net/?EidoGo">Latest Updates</a></li>
+            <li>
+                
+            <div style="margin: 5px 0 0 15px">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+                ">
+                <input type="image" src="../www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" tppabs="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="../www.paypalobjects.com/en_US/i/scr/pixel.gif" tppabs="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </div>
+            
+            </li>
+        </ul>
+
+    </div>
+
+    <div id="content">
+
+<script type="text/javascript" src="js/rsh.compressed.js" tppabs="http://eidogo.com/js/rsh.compressed.js"></script>
+
+<div id="options"></div>
+
+<div id="options-joseki" style="display: none">
+    <strong>Joseki Tutor:</strong>
+    <a href="index.htm#kjd" tppabs="http://eidogo.com/#kjd">Kogo's Joseki Dictionary</a> |
+    <a href="index.htm#kombilo" tppabs="http://eidogo.com/#kombilo">Kombilo / Pro Game Database</a>
+</div>
+
+<div id="options-gnugo" style="display: none">
+    <strong>GNU Go</strong>
+    &nbsp;&nbsp;&nbsp;&nbsp; Board Size:
+    <a href="index.htm#gnugo" tppabs="http://eidogo.com/#gnugo">19x19</a> |
+    <a href="index.htm#gnugo-9" tppabs="http://eidogo.com/#gnugo-9">9x9</a> |
+    <a href="index.htm#gnugo-13" tppabs="http://eidogo.com/#gnugo-13">13x13</a>
+    &nbsp;&nbsp; Your Color: <select id="human-color">
+        <option value="W">White</option>
+        <option value="B">Black</option>
+    </select>
+    &nbsp;&nbsp; Handicap: <select id="handicap">
+        <option value="0">None</option>
+        <option value="1">1 stone</option>
+        <option value="2">2 stones</option>
+        <option value="3">3 stones</option>
+        <option value="4">4 stones</option>
+        <option value="5">5 stones</option>
+        <option value="6">6 stones</option>
+        <option value="7">7 stones</option>
+        <option value="8">8 stones</option>
+        <option value="9">9 stones</option>
+    </select>
+</div>
+
+<div id="options-blank" style="display: none">
+    <strong>Blank Board:</strong>
+    <a href="index.htm#blank" tppabs="http://eidogo.com/#blank">19x19</a> |
+    <a href="index.htm#blank-9" tppabs="http://eidogo.com/#blank-9">9x9</a> |
+    <a href="index.htm#blank-13" tppabs="http://eidogo.com/#blank-13">13x13</a>
+</div>
+
+<div id="player-container"></div>
+
+<script type="text/javascript">
+
+var player;
+
+(function() {
+    
+    var byId = eidogo.util.byId,
+        hide = eidogo.util.hide,
+        show = eidogo.util.show,
+        addEvent = eidogo.util.addEvent;
+    
+    // Provide handlers for frontend things (page title, permalinks) that
+    // aren't handled by Player directly
+    var hooks = {
+        initGame: function() {
+            document.title = "EidoGo - " + this.getGameDescription();
+        },
+        showGameInfo: function(info) {
+            if (this.gameName == "kjd") {
+                ['KM', 'HA', 'CP', 'DT'].forEach(function(p) { delete info[p]; });
+                info.GC = "Available from " +
+                    "<a href='http://waterfire.us/joseki.htm'>http://waterfire.us/joseki.htm</a><br><br>" +
+                    "KJD Copyright 2006-2007 by Andre Ay. Copyright 1998-2005 " +
+                    "by Gary Odom. Portions copyright 2000-2001 by Stefan " +
+                    "Verstraeten. Used with permission.";
+            } else if (this.gameName == "kombilo") {
+                info.GN = "Kombilo / Pro Game Database";
+                info.GC = "Continuations derived from around 10,000 pro games.\n\n" +
+                    "Since the continuations are computed automatically, there is a certain " +
+                    "amount of spurious, non-fuseki moves included.";
+            }
+        },
+        setPermalink: function() {
+            if (!this.gameName || ['search', 'gnugo', 'url'].contains(this.gameName)) return;
+            var gn = this.gameName || "";
+            // Use move-based path for josekis to future-proof permalinks
+            var path = (gn == "kjd" || gn == "kombilo" ?
+                this.cursor.getPathMoves().join("") :
+                this.cursor.getPath().join(","));
+            var hash = gn + (path ? ":" + path : "");
+            addHistory(hash);
+        },
+        searchRegion: function(params) {
+            this.hooks.initGame.call(this); // update title
+            var hash = "search:" + params.q + ":" + params.w + "x" + params.h +
+                ":" + this.compressPattern(params.p);
+            if (params.a && params.a != "corner") hash += ":" + params.a;
+            if (hash != location.hash.replace(/^#/, ""))
+                addHistory(hash);
+        },
+        saved: function(gn) {
+            loadGame({gameName: gn, loadPath: [0,0]}, function() {
+                var url = location.href.replace(/#[^#]+$/, "") + "#" + this.gameName;
+                this.setPermalink();
+                this.prependComment("Game saved to <a href='" + url + "'>" + url + "</a>");
+            }.bind(this));
+        }
+    };
+    
+    // Load game data; create a Player instance if necessary
+    function loadGame(params, completeFn) {
+        params = params || {};
+        var cfg = {
+            progressiveLoad:    false,
+            markCurrent:        true,
+            markVariations:     true,
+            markNext:           false,
+            showGameInfo:       true,
+            showPlayerInfo:     true,
+            showOptions:        true,
+            showTools:          true,
+            showNavTree:        true,
+            problemMode:        false
+        };
+        for (var key in params) {
+            cfg[key] = params[key];
+        }
+        if (!player) {
+            player = new eidogo.Player({
+                container:          "player-container",
+                sgfPath:            "sgf/",
+                searchUrl:          "backend/search.php.htm"/*tpa=http://eidogo.com/backend/search.php*/,
+                saveUrl:            "backend/save.php.htm"/*tpa=http://eidogo.com/backend/save.php*/,
+                downloadUrl:        "backend/download.php-id="/*tpa=http://eidogo.com/backend/download.php?id=*/,
+                scoreEstUrl:        "",//"backend/gnugo.php.htm"/*tpa=http://eidogo.com/backend/gnugo.php*/,
+                hooks:              hooks,
+                enableShortcuts:    true
+            });
+            // Temporary notice for score est
+            addEvent(player.dom.scoreEst, "click", function(e) {
+                alert("Sorry, Score Estimate is temporarily unavailable.\n\nIt was using excessive server resources. If you have a server with lots of spare CPU cycles, let me know.");
+                eidogo.util.stopEvent(e);
+                return false;
+            });
+        }
+        player.loadSgf(cfg, completeFn && completeFn.bind(player));
+    }
+    
+    var notLoaded = true;
+    
+    // Perform the appriate loading action depending on what hash is given
+    function loadState(hash) {
+        notLoaded = false;
+        var hashParts = hash ? hash.replace(/^#/, "").split(/:/) : [];
+        var gameName = hashParts[0] || "";
+        var loadPath = hashParts[1] ? hashParts[1].split(",") : null;
+        var rest = hashParts.slice(1);
+        
+        hide("options");
+        
+        if (!gameName || gameName == "kjd" || gameName == "kombilo")
+            loadJoseki(gameName, loadPath);
+        else if (gameName == "url")
+            loadUrl(hash.replace(/^#?url:/, ""));
+        else if (gameName == "raw")
+            loadRaw(decodeURIComponent(hash.replace(/^#?raw:/g, "").replace(/\+/g, " ")));
+        else if (gameName == "search")
+            loadSearch(rest);
+        else if (gameName.indexOf("gnugo") === 0)
+            loadGnuGo(gameName);
+        else if (gameName.indexOf("blank") === 0)
+            loadBlank(gameName);
+        else
+            loadGame({gameName: gameName, loadPath: loadPath});
+    }
+    
+    function loadJoseki(gameName, loadPath) {
+        byId("options").innerHTML = byId("options-joseki").innerHTML;
+        show("options");
+        if (loadPath) {
+            // Parse moves out of string like "aepqnctt"
+            var s = loadPath[0];
+            var coord;
+            loadPath = [];
+            while (coord = s.substring(0, 2)) {
+                loadPath.push(coord);
+                s = s.substring(2);
+            }
+        }
+        loadGame({
+            gameName:           gameName || "kjd",
+            progressiveUrl:     gameName == "kombilo" ? "backend/search.php.htm"/*tpa=http://eidogo.com/backend/search.php*/ : "backend/kjd_progressive.php.htm"/*tpa=http://eidogo.com/backend/kjd_progressive.php*/,
+            loadPath:           loadPath,
+            progressiveLoad:    true,
+            progressiveMode:    gameName == "kombilo" ? "pattern" : "id",
+            markNext:           true,
+            showPlayerInfo:     false,
+            showOptions:        false});
+    }
+    
+    function loadSearch(args) {
+        if (args.length) {
+            loadGame({showOptions: false});
+            player.loadSearch.apply(player, args);
+        } else {
+            loadGame({
+                gameName:    "search",
+                showOptions: false,
+                loadPath:    [0,0]});
+        }
+    }
+    
+    function loadUrl(url) {
+        loadGame({
+            gameName:   "url",
+            sgfUrl:     "backend/fetch.php?url=" + url});
+    }
+    
+    function loadRaw(data) {
+        loadGame({
+            gameName:   "raw",
+            sgf:        data});
+    }
+    
+    function loadGnuGo(gameName) {
+        loadGame({gameName: ""}, function() {
+            this.showComments("<p>Sorry, GNU Go is temporarily unavailable.</p><p>It was using excessive server resources. If you have a server with lots of spare CPU cycles, let me know.</p>");
+        });
+        return;
+        byId("options").innerHTML = byId("options-gnugo").innerHTML;
+        show("options");
+        var params = {
+            gameName:       "",
+            opponentUrl:    "backend/gnugo.php.htm"/*tpa=http://eidogo.com/backend/gnugo.php*/,
+            opponentColor:  "B",
+            opponentLevel:  7,
+            handicap:       0
+        };
+        var parts = gameName.split("-");
+        if (parts[1])
+            params.boardSize = parts[1];
+        var inputColor = byId("human-color"),
+            inputHandi = byId("handicap");
+        var changeHandler = function() {
+            params.opponentColor = inputColor.value == "W" ? "B" : "W";
+            params.handicap = inputHandi.value;
+            loadGame(params);
+        }
+        addEvent(inputColor, "change", changeHandler);
+        addEvent(inputHandi, "change", changeHandler);
+        loadGame(params);
+    }
+    
+    function loadBlank(gameName) {
+        byId("options").innerHTML = byId("options-blank").innerHTML;
+        show("options");
+        loadGame({gameName: gameName});
+    }
+    
+    function addHistory(hash) {
+        // Safari 2 sucks
+        if (dhtmlHistory.isSafari)
+            location.hash = hash;
+        else
+            dhtmlHistory.add(hash);
+    }
+    
+    // Appease RSH
+    window.dhtmlHistory.create({
+        toJSON: function(o) { return ''; },
+        fromJSON: function(s) { return {}; }});
+
+    // Ajaxify our links
+    addEvent(document, "click", function(evt) {
+        var target = eidogo.util.getTarget(evt)
+        if (target.nodeName.toUpperCase() != "A" || target.href.indexOf("#") == -1) return true;
+        var hash = target.href.replace(/^.*#/, "");
+        addHistory(hash);
+        player.closeSearch();
+        loadState(hash);
+        eidogo.util.stopEvent(evt);
+    });
+    
+    dhtmlHistory.initialize();
+    dhtmlHistory.addListener(loadState);
+    
+    // Make sure we load our state on first page load (RSH quirk)
+    if (notLoaded)
+        loadState(location.hash.replace(/^#/, ""));
+    
+})();
+
+</script>
+
+    </div>
+
+</div>
+
+<script src="../www.google-analytics.com/urchin.js" tppabs="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_uacct = "UA-1342901-1";
+urchinTracker();
+</script>
+
+</body>
+</html>
