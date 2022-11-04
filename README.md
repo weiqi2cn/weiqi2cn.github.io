@@ -13,3 +13,15 @@ https://go.tianqiweiqi.com/wgo
 2.eidogo
 
 https://go.tianqiweiqi.com/eidogo
+
+url:
+
+https://gobase.org
+
+https://gobase.org/joseki
+
+https://senseis.xmp.net
+
+https://resigning-in-sente.github.io
+
+https://lifein19x19.com
